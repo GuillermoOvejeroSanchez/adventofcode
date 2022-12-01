@@ -11,12 +11,12 @@ install: ## install pipenv dependencies
 	@pipenv install
 
 calendar: ## shows current calendar or any year calendar if given parameter year=YYYY
-	@pipenv run python3 aoc_calendar.py $(year)
+	@pipenv run python3 ./aoc_lib/aoc_calendar.py $(year)
 
 problem: ## creates folder structure and show given problem year=yyyy and day=d
-	@pipenv run python3 aoc_problem.py $(year) $(day)
+	@pipenv run python3 ./aoc_lib/aoc_problem.py $(year) $(day)
 
 today-problem: ## creates folder structure and show today's problem
-	@pipenv run python3 aoc_problem.py
+	@pipenv run python3 ./aoc_lib/aoc_problem.py
 
 .PHONY: problem calendar start install help
