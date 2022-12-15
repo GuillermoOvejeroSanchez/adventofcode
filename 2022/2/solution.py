@@ -103,7 +103,7 @@ def get_total_point_per_round_choose(opponent: str, outcome: str) -> int:
 
 
 if __name__ == "__main__":
-    lines = data = read_input(2022, 2, local=True).splitlines()
+    lines = data = read_input(2022, 2).splitlines()
     points = 0
     point_choose_outcome = 0
     for line in lines:
