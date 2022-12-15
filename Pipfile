@@ -8,6 +8,7 @@ pyfiglet = "*"
 advent-of-code-data = "*"
 beautifulsoup4 = "*"
 lxml = "*"
+black = "*"
 
 [dev-packages]
 

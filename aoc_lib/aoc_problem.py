@@ -12,16 +12,23 @@ if __name__ == "__main__":
     else:
         year = datetime.now().year
         day = datetime.now().day
-    
+    pycode = f"""from aoc_lib.aoc_read_input import read_input
+
+if __name__ == "__main__":
+    data = read_input({year}, {day})
+    """
     cookies = {"session": os.getenv("AOC_SESSION")}
     data = requests.get(f"https://adventofcode.com/{year}/day/{day}", cookies=cookies)
-    soup = BeautifulSoup(data.text,features="lxml")
+    soup = BeautifulSoup(data.text, features="lxml")
     content = soup.find_all("article", class_=re.compile("day-desc"))
     path = f"./{year}/{day}/"
     if not os.path.exists(f"./{year}/{day}/"):
         os.makedirs(path)
+        open(path + "test.in", "a").close()
+        with open(path + "solution.py", "a") as f:
+            f.write(pycode)
         print(f"You can start working on {year}/{day} problem")
-    
+
     for tag in content:
         for line in tag.contents:
             print(line.text)

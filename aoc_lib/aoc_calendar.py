@@ -16,16 +16,13 @@ if __name__ == "__main__":
 
     soup = BeautifulSoup(data.text, features="lxml")
     output = []
-    
-    content = soup.find_all("span", class_=re.compile("calendar-day\d"))
-    for line in content:
-        output.append(line.text)
-
-    content_completed = soup.find_all("a", class_=re.compile("calendar-day\d"))
-    for line in content_completed:
-        output.append(line.text)
-
 
     f = Figlet(font="slant")
     print(f.renderText(f"Advent of code"))
-    [print(x) for x in output]
+    content = soup.find_all("span", class_=re.compile("calendar-day\d"))
+    for line in content:
+        print(line.text)
+
+    content_completed = soup.find_all("a", class_=re.compile("calendar-day\d"))
+    for line in content_completed:
+        print(line.text)

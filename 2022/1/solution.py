@@ -1,8 +1,8 @@
 import bisect
-import aocd
+from aoc_lib.aoc_read_input import read_input
 
-data = aocd.get_data(day=1, year=2022)
-lines = [line for line in aocd.get_data(day=1, year=2022).splitlines()]
+data = read_input(2022, 1)
+lines = [line for line in data.splitlines()]
 
 calories = 0
 list_of_calories = []
