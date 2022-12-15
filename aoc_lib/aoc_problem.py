@@ -19,14 +19,21 @@ if __name__ == "__main__":
     """
     cookies = {"session": os.getenv("AOC_SESSION")}
     data = requests.get(f"https://adventofcode.com/{year}/day/{day}", cookies=cookies)
+    input_data = requests.get(
+        f"https://adventofcode.com/{year}/day/{day}/input", cookies=cookies
+    ).text
     soup = BeautifulSoup(data.text, features="lxml")
     content = soup.find_all("article", class_=re.compile("day-desc"))
     path = f"./{year}/{day}/"
     if not os.path.exists(f"./{year}/{day}/"):
         os.makedirs(path)
         open(path + "test.in", "a").close()
-        with open(path + "solution.py", "a") as f:
-            f.write(pycode)
+        open(
+            f"src/main/resources/aoc{year}/" + f"Day{day.zfill(2)}test.in", "a"
+        ).close()
+        open(f"src/main/resources/aoc{year}/" + f"Day{day.zfill(2)}.in", "a").write(
+            input_data
+        )
         print(f"You can start working on {year}/{day} problem")
 
     for tag in content:

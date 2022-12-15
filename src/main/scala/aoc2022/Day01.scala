@@ -9,6 +9,6 @@ object Day01:
   def part2(input: String): Int = parse(input).sorted.takeRight(3).sum
 
   def main(args: Array[String]): Unit =
-    val data = io.Source.fromResource("aoc2022/Day01_Example.in").mkString
+    val data = io.Source.fromResource("aoc2022/Day01test.in").mkString
     println(part1(data))
     println(part2(data))
